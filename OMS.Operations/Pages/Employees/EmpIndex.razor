@@ -1,0 +1,37 @@
+﻿@page "/EmpIndex"
+@inject IViewEmployeesByNamUseCasee viewemployees
+@inject NavigationManager navman
+<h2>Employees List</h2>
+<br />
+<EmployeeSearchBoxComponent></EmployeeSearchBoxComponent>
+<br />
+
+<div class="row">
+    @foreach (var emp in _employees)
+    {
+
+        <div class="card col-4 rounded-3 border-5">
+            <div class="card-header mb-3">
+                @emp.Title @emp.FirstName @emp.LastName
+            </div>
+            <div class="card-body" hight="100">
+                <img src=@emp.ImageUrl class="img-fluid" alt="">
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn-success">Edit</button>
+                <button type="button" class="btn-info">View</button>
+                <button type="button" class="btn-danger">Search</button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private List<Employee> _employees = new List<Employee>();
+    protected override async Task OnInitializedAsync()
+    {
+        _employees = (await viewemployees.ExecuteAsync("")).ToList();
+
+    }
+
+}

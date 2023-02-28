@@ -1,0 +1,20 @@
+﻿@page "/"
+@inject IViewEmployeesByNamUseCasee viewemployees
+<PageTitle>Test Page</PageTitle>
+<ul>
+    @foreach(var Emp in _employees)
+    {
+        <li>
+            @Emp.FirstName - @Emp.LastName 
+        </li>
+    }
+</ul>
+<img src="~/images/emp1.jpg" />
+<img src="c:\Users\MRS TITI\AppData\Local\Temp\tmpF422.tmp\emp1.jpg" />
+@code{
+    private List<Employee> _employees = new List<Employee>();
+    protected override async Task OnInitializedAsync()
+    {
+        _employees = (await viewemployees.ExecuteAsync("")).ToList();
+    }
+}
