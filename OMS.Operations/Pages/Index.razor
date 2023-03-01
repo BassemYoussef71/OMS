@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inject IViewEmployeesByNamUseCasee viewemployees
-<PageTitle>Test Page</PageTitle>
-<ul>
+<PageTitle>Prima Egypt For Freight and Agencies S. A. E.</PageTitle>
+@*<ul>
     @foreach(var Emp in _employees)
     {
         <li>
@@ -9,8 +9,14 @@
         </li>
     }
 </ul>
-<img src="~/images/emp1.jpg" />
-<img src="c:\Users\MRS TITI\AppData\Local\Temp\tmpF422.tmp\emp1.jpg" />
+*@ 
+<h1>Prima Egypt For Freight and Agencies S. A. E.</h1>
+<h4>Since 1999</h4>
+<hr/>
+<img src="images/images.jpg" width="600" hight="600" />
+<p>
+    for the last two decade we have been working very hard to stisfy our clients 
+    </p>
 @code{
     private List<Employee> _employees = new List<Employee>();
     protected override async Task OnInitializedAsync()
