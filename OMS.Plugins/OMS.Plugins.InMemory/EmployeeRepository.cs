@@ -13,11 +13,11 @@ namespace OMS.Plugins.InMemory
                 new Employee{EmployeeId=1,FirstName="Bassem",LastName="Youssef",
                     Address="70 Ali Amin Street",City="Cairo",Country="Egypt",PostalCode="123456",
                     Phone="0123456789",Region="Nasr City",UserName="bassem.youssef",
-                    ImageUrl="images/emp1.jpg",
+                    ImageUrl="images/emp4.png",
                     UserPassword="b71y19",Title="Mr."},
                 new Employee{EmployeeId=2,FirstName="Barsoum",LastName="Hannah",
                     UserName="BarsoumSaad",UserPassword="123456",
-                    ImageUrl="images/SBS-Benefits-616.jpg",Title="Mr."},
+                    ImageUrl="images/emp5.jpg",Title="Mr."},
 
                 new Employee{EmployeeId=3,FirstName="Youssef",LastName="Wahba",
                     UserName="Youssef.Wahba",UserPassword="Yw123456",Title="Mr.",
