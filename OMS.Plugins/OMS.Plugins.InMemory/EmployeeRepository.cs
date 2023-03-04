@@ -17,12 +17,14 @@ namespace OMS.Plugins.InMemory
                     UserPassword="b71y19",Title="Mr."},
                 new Employee{EmployeeId=2,FirstName="Barsoum",LastName="Hannah",
                     UserName="BarsoumSaad",UserPassword="123456",
-                    ImageUrl="images/SBS-Benefits-616.jpg"},
+                    ImageUrl="images/SBS-Benefits-616.jpg",Title="Mr."},
 
                 new Employee{EmployeeId=3,FirstName="Youssef",LastName="Wahba",
-                    UserName="Youssef.Wahba",UserPassword="Yw123456"},
+                    UserName="Youssef.Wahba",UserPassword="Yw123456",Title="Mr.",
+                    ImageUrl="images/emp3.jpg"},
                 new Employee{EmployeeId=4,FirstName="Ahmed",LastName="Kasem",
-                    UserName="Yasser.Kasem",UserPassword="Yk123456"}
+                    UserName="Yasser.Kasem",UserPassword="Yk123456",Title="Mr.",
+                    ImageUrl="images/emp4.jpg"}
 
 
             };

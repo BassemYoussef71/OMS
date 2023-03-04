@@ -11,26 +11,29 @@
     {
 
         @*<div class="card col-4 rounded-3 border-5">
-            <div class="card-header mb-3">
-                @emp.Title @emp.FirstName @emp.LastName
+    <div class="card-header mb-3">
+    @emp.Title @emp.FirstName @emp.LastName
+    </div>
+    <div class="card-body" >
+    <img src=@emp.ImageUrl width="200" hight="100" scale="streach" alt="">
+    </div>
+    <div class="card-footer">
+    <button type="button" class="btn-success">Edit</button>
+    <button type="button" class="btn-info">View</button>
+    <button type="button" class="btn-danger">Search</button>
+    </div>
+    </div>*@
+        <div class="card" style="width: 18rem;height:-moz-fit-content">
+            <img src=@emp.ImageUrl class="card-img-top" width="100" hight="100" alt="">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight:900"> @emp.Title @emp.FirstName @emp.LastName</h5>
+                @if (!string.IsNullOrWhiteSpace(emp.Address))
+                {
+                    <p class="card-text float-xxl-end">@emp.Address,@emp.City,@emp.Country</p>
+                }
             </div>
-            <div class="card-body" >
-                <img src=@emp.ImageUrl width="200" hight="100" scale="streach" alt="">
-            </div>
-            <div class="card-footer">
-                <button type="button" class="btn-success">Edit</button>
-                <button type="button" class="btn-info">View</button>
-                <button type="button" class="btn-danger">Search</button>
-            </div>
-        </div>*@
-   <div class="card" style="width: 18rem;">
-  <img src=@emp.ImageUrl class="card-img-top" width="100" hight="100" alt="">
-  <div class="card-body">
-    <h5 class="card-title"> @emp.Title @emp.FirstName @emp.LastName</h5>
-    <p class="card-text">@emp.Address @emp.City</p>
-    <a href="#" class="btn btn-primary">View Details</a>
-  </div>
-</div>
+            <a href="#" class="btn btn-primary">View Details</a>
+        </div>
     }
 </div>
 
