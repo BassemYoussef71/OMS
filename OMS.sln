@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OMS.UseCases", "OMS.UseCase
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OMS.Plugins", "OMS.Plugins", "{18F2EF21-298D-4E24-9DF9-37874D079B23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMS.Plugins.InMemory", "OMS.Plugins\OMS.Plugins.InMemory\OMS.Plugins.InMemory.csproj", "{3420BED3-265C-42AA-B571-E242401501D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OMS.Plugins.InMemory", "OMS.Plugins\OMS.Plugins.InMemory\OMS.Plugins.InMemory.csproj", "{3420BED3-265C-42AA-B571-E242401501D5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

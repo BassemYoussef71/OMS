@@ -1,0 +1,35 @@
+﻿@using OMS.CoreBusniess;
+@using OMS.UseCases.Employees.Interfaces;
+@inject IViewEmployeesByNamUseCasee viewemployees
+<div class="row">
+    @foreach (var emp in _employees)
+    {
+        <div class="card" style="width: 14rem;height:-moz-fit-content">
+            <img src=@emp.ImageUrl class="card-img-top" width="100" hight="100" alt="">
+            <div class="card-body">
+                <h5 class="card-title" style="font-weight:900"> @emp.Title @emp.FirstName @emp.LastName</h5>
+                @if (!string.IsNullOrWhiteSpace(emp.Address))
+                {
+                    <p class="card-text float-xxl-end">@emp.Address,@emp.City,@emp.Country</p>
+                }
+            </div>
+            <a href="#" class="btn btn-primary">View Details</a>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string searchTerms { get; set; } = string.Empty;
+
+    private List<Employee> _employees = new List<Employee>();
+    protected override async Task OnInitializedAsync()
+    {
+        _employees = (await viewemployees.ExecuteAsync("")).ToList();
+
+    }
+    protected override  async Task OnParametersSetAsync()
+    {
+        _employees = (await viewemployees.ExecuteAsync(searchTerms)).ToList();
+    }
+}

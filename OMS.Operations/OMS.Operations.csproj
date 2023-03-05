@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Pages\Employees\Controls\EmcardsComponentbox.razor" />
     <None Include="Pages\Employees\EmpIndex.razor" />
   </ItemGroup>
 
