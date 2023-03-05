@@ -14,6 +14,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.AddSingleton<IEmployeesRepository,EmployeeRepository>();
 builder.Services.AddTransient<IViewEmployeesByNamUseCasee, ViewEmployeesByNamUseCasee>();
+builder.Services.AddTransient<IAddEmployeeUseCase, AddEmployeeUseCase>();
 
 var app = builder.Build();
 

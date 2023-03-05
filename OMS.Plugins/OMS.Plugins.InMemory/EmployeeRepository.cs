@@ -1,9 +1,10 @@
 ﻿using OMS.CoreBusniess;
 using OMS.UseCases.PluginInterfaces;
+using System.Runtime.CompilerServices;
 
 namespace OMS.Plugins.InMemory
 {
-    public class EmployeeRepository : IEmployeesRepository
+    public class EmployeeRepository :  IEmployeesRepository
     {
         private List<Employee> _employees;
         public EmployeeRepository()
@@ -29,12 +30,26 @@ namespace OMS.Plugins.InMemory
 
             };
         }
+
         public async Task<IEnumerable<Employee>> GetEmployeesByNameAsync(string name)
         {
             if (string.IsNullOrEmpty(name)) return await Task.FromResult(_employees);
             return _employees.Where(x => x.FirstName.Contains(name,
                 StringComparison.OrdinalIgnoreCase) || x.LastName.Contains(name,
                 StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+        public Task AddEmployeeAsync(Employee employee)
+        {
+            if (_employees.Any(x => x.FirstName.Equals(employee.FirstName,
+                StringComparison.OrdinalIgnoreCase) && x.LastName.Equals(employee.LastName,
+                StringComparison.OrdinalIgnoreCase)))
+            {
+                return Task.CompletedTask;
+            }
+            var maxid = _employees.Max(x => x.EmployeeId) + 1;
+            employee.EmployeeId = maxid;
+            _employees.Add(employee);
+            return Task.CompletedTask;
         }
     }
 }
