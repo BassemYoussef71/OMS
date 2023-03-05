@@ -1,8 +1,86 @@
 ﻿@page "/AddEmp"
-
+@inject IAddEmployeeUseCase addemp
 
 <h3>Add Employee</h3>
+<br />
+<EditForm Model="employee" class="row gy-2 gx-3 align-items-center m-4" OnInvalidSubmit="Saveemp">
+    <DataAnnotationsValidator></DataAnnotationsValidator>
+    <ValidationSummary></ValidationSummary>
+    <div class="form-group col-sm-6">
+        <label for="FirstName">First Name</label>
+        <InputText id="FirstName"
+                   class="form-control"
+                   @bind-Value="employee.FirstName">
+        </InputText>
+    </div>
+    <div class="form-group col-sm-6">
+        <label for="LastName">Last Name</label>
+        <InputText id="LasttName"
+                   class="form-control"
+                   @bind-Value="employee.LastName">
+        </InputText>
+    </div>
+    <div class="form-group col-12">
+        <label for="Address">Address</label>
+        <InputTextArea id="Address"
+                       class="form-control"
+                       @bind-Value="employee.Address">
+        </InputTextArea>
+    </div>
+    <div class="form-group col-6">
+        <label for="City">City</label>
+        <InputText id="City"
+                   class="form-control"
+                   @bind-Value="employee.City">
+        </InputText>
+    </div>
+ 
+    <div class="form-group col-sm-6">
+        <label for="Country">Country</label>
+        <InputText id="Country"
+                   class="form-control"
+                   @bind-Value="employee.Country">
+        </InputText>
+    </div>
+    <div class="form-group col-sm-6">
+        <label for="PsotalCode">Postal Code</label>
+        <InputText id="postalcode"
+                   class="form-control"
+                   @bind-Value="employee.PostalCode">
+        </InputText>
+    </div>
+    <div class="form-group col-sm-6">
+        <label for="Telphone">Telphone No</label>
+        <InputText  id="Telphone"
+                   class="form-control"
+                   @bind-Value="employee.Phone">
+        </InputText>
+    </div>
+    <div class="form-group col-sm-6">
+        <label for="UserName">UserName</label>
+        <InputText id="UserName"
+                   class="form-control"
+                   @bind-Value="employee.UserName">
+        </InputText>
+    </div>
+    <div class="form-group col-sm-6">
+        <label for="userPass">User Password</label>
+        <InputText type="password"  id="userPass"
+                   class="form-control"
+                   @bind-Value="employee.UserPassword">
+        </InputText>
+    </div>
+    <br />
+    <br />
+    <div class="co-sm-4">
+        <button class="btn btn-primary" type="submit">Save Employee</button>
+    </div>
+</EditForm>
 
 @code {
+    private Employee employee = new Employee();
+    private void Saveemp()
+    {
 
+    }
 }
