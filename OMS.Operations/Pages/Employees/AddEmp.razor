@@ -10,11 +10,11 @@
 
 <h3>Add Employee</h3>
 <br />
-<EditForm Model="employee" 
-    class="row gy-2 gx-3 align-items-center m-4" 
-    method="post"  
-    enctype="multipart/form-data "
-    OnInvalidSubmit="Saveemp">
+<EditForm Model="employee"
+          class="row gy-2 gx-3 align-items-center m-4"
+          method="post"
+          enctype="multipart/form-data "
+          OnInvalidSubmit="Saveemp">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
     <div class="form-group col-sm-2">
@@ -108,24 +108,23 @@
                    @bind-Value="employee.Dop">
         </InputDate>
     </div>
-    @*<div class="form-group col-sm-3">
-    <label for="ImgUrl">User Image</label>
-    <InputFile   id="ImgUrl"
-    class="form-control"
-    @bind-Value="imgsrc" accept=".jpg,.png,.bmp,.gif"
-    @onclick="loadfile">
-    </InputFile>
-    <img src="imgsrc" class="rounded mx-auto d-block" alt="">
-    </div>*@
     <div class="form-group col-sm-3">
-        <label for="formFileMultiple" class="form-label">User Logo</label>
-        <input class="form-control"
-               type="file"
-               id="formFileMultiple"
-               @bind="imgsrc"
-               accept=".jpg,.bmp,.gif,.jpeg" @onblur="loadfile">
-        @employee.ImageUrl
+        <label for="ImgUrl">User Image</label>
+        <InputFile OnChange="loadfile" id="ImgUrl"
+                   class="form-control"
+                   accept=".jpg,.png,.bmp,.gif">
+        </InputFile>
+        <img src="imgsrc" class="rounded mx-auto d-block" alt="">
     </div>
+    @* <div class="form-group col-sm-3">
+    <label for="formFileMultiple" class="form-label">User Logo</label>
+    <input class="form-control"
+    type="file"
+    id="formFileMultiple"
+    @bind="imgsrc"
+    accept=".jpg,.bmp,.gif,.jpeg" @onblur="loadfile">
+    @employee.ImageUrl
+    </div>*@
     <div class="card" style="width: 34rem;height:-moz-fit-content">
         <img src=@employee.ImageUrl class="card-img-top" width="200" hight="200" alt="">
         <div class="card-body">
@@ -158,6 +157,7 @@
 @code {
     private Employee employee = new Employee();
     public string imgsrc { get; set; } = string.Empty;
+    private long maxfilsize = 1024 * 1024 * 3;
     private List<string> titleitems = new List<string>()
     {
      {"Mr."},
@@ -168,24 +168,18 @@
     {
 
     }
-    private void loadfile()
+    private async void loadfile(InputFileChangeEventArgs er)
     {
-        //employee.ImageUrl = imgsrc;
-        if (imgsrc != null)
+        var fileext = Path.GetExtension(er.File.Name);
+        var imageFile = await er.File.RequestImageFileAsync("image/" + fileext, maxWidth:1024, maxHeight: 1024);
+        using (FileStream fs = new($"F:\\csprojects\\OMS\\OMS.Operations\\wwwroot\\Images\\{er.File.Name}", FileMode.Create))
         {
-            var dir = Path.GetDirectoryName(imgsrc);
-            if (dir=="C:\fakepath")
-            {
-                employee.ImageUrl = "";
-            }
-            else
-            {
-                employee.ImageUrl = imgsrc;
-            }
-            //imgsrc = employee.ImageUrl;
-            employee.ImageUrl = imgsrc;
+            await imageFile.OpenReadStream(maxfilsize).CopyToAsync(fs);
+            employee.ImageUrl = $"Images/{er.File.Name}";
+            this.StateHasChanged();
         }
     }
+
     //private Task xloadf(InputFileChangeEventArgs er)
     //{
     //    var sd = Path.GetFileName(er.File.Name);
