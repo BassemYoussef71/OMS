@@ -60,7 +60,7 @@ namespace OMS.CoreBusniess
         public string? ImageUrl { get; set; } = string.Empty;
        
         [DisplayName("Basic Salary"), 
-            DataType(DataType.Currency)] 
+            ] 
         public decimal? BasicSalary { get; set; } = 0;
 
         [DisplayName("Extra Salary"),

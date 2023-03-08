@@ -46,6 +46,7 @@
 
   <ItemGroup>
     <PackageReference Include="bootstrap" Version="5.2.3" />
+    <PackageReference Include="BootstrapBlazor" Version="7.4.1" />
     <PackageReference Include="MudBlazor" Version="6.1.9" />
   </ItemGroup>
 
