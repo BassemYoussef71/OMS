@@ -7,6 +7,7 @@
 @using Microsoft.AspNetCore.Mvc.RazorPages;
 @using System.IO;
 @using System.Threading.Tasks;
+@inject IConfiguration Config
 
 <h3>Add Employee</h3>
 <br />
@@ -198,10 +199,13 @@
     {
         var fileext = Path.GetExtension(er.File.Name);
         var imageFile = await er.File.RequestImageFileAsync("image/" + fileext, maxWidth: 1024, maxHeight: 1024);
-        using (FileStream fs = new($"F:\\csprojects\\OMS\\OMS.Operations\\wwwroot\\Images\\{er.File.Name}", FileMode.Create))
+        string newfilename = Path.ChangeExtension($"{employee.FirstName}_{employee.LastName}",
+        Path.GetExtension(er.File.Name));
+        Directory.CreateDirectory($"wwwroot\\Images\\{employee.UserName}\\");
+        using (FileStream fs = new($"wwwroot\\Images\\{employee.UserName}\\{newfilename}", FileMode.Create))
         {
             await imageFile.OpenReadStream(maxfilsize).CopyToAsync(fs);
-            employee.ImageUrl = $"Images/{er.File.Name}";
+            employee.ImageUrl = $"Images/{employee.UserName}/{newfilename}";
             this.StateHasChanged();
         }
     }
