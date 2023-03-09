@@ -18,11 +18,13 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Employees\EmpIndex.razor" />
+    <_ContentIncludedByDefault Remove="Pages\Employees\ViewEmp.razor" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\Employees\Controls\EmcardsComponentbox.razor" />
     <None Include="Pages\Employees\EmpIndex.razor" />
+    <None Include="Pages\Employees\ViewEmp.razor" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +50,10 @@
     <PackageReference Include="bootstrap" Version="5.2.3" />
     <PackageReference Include="BootstrapBlazor" Version="7.4.1" />
     <PackageReference Include="MudBlazor" Version="6.1.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Employees\ViewEmp.razor" />
   </ItemGroup>
 
 </Project>

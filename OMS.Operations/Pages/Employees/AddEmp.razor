@@ -1,21 +1,14 @@
 ﻿@page "/AddEmp"
-@using System.IO.Pipelines;
 @inject IAddEmployeeUseCase addemp
-@using Microsoft.AspNetCore.Hosting;
-@using Microsoft.AspNetCore.Http;
-@using Microsoft.AspNetCore.Mvc;
-@using Microsoft.AspNetCore.Mvc.RazorPages;
-@using System.IO;
-@using System.Threading.Tasks;
 @inject IConfiguration Config
+@inject NavigationManager navman
 
 <h3>Add Employee</h3>
 <br />
 <EditForm Model="employee"
           class="row gy-2 gx-3 align-items-center m-4"
           method="post"
-          enctype="multipart/form-data "
-          OnInvalidSubmit="Saveemp">
+         OnValidSubmit="Saveemp">
     <DataAnnotationsValidator></DataAnnotationsValidator>
     <ValidationSummary></ValidationSummary>
     <div class="form-group col-sm-2">
@@ -191,9 +184,10 @@
      {"Miss."},
      {"Mrs"}
     };
-    private void Saveemp()
+    private async Task  Saveemp()
     {
-
+        await addemp.ExecuteAsync(employee);
+        navman.NavigateTo("/EmpIndex");
     }
     private async void loadfile(InputFileChangeEventArgs er)
     {
